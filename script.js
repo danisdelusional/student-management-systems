@@ -8,7 +8,7 @@ const averageGrade = document.getElementById("averageGrade");
 const attendanceRate = document.getElementById("attendanceRate");
 
 // Store students
-let students = [];
+let students = JSON.parse(localStorage.getItem("students")) || [];
 
 
 // ADD STUDENT
@@ -30,7 +30,11 @@ studentForm.addEventListener("submit", function (event) {
 
     students.push(student);
 
-    displayStudents();
+saveStudents();
+
+displayStudents();
+
+    
 
     studentForm.reset();
 });
@@ -85,6 +89,8 @@ function deleteStudent(index) {
 
         students.splice(index, 1);
 
+         saveStudents();
+
         displayStudents();
     }
 }
@@ -113,6 +119,8 @@ function editStudent(index) {
         student.attendance = Number(newAttendance);
     }
 
+    saveStudents();
+    
     displayStudents();
 }
 
@@ -167,4 +175,7 @@ function updateDashboard() {
 
     attendanceRate.textContent =
         Math.round(attendance) + "%";
+}function saveStudents() {
+    localStorage.setItem("students", JSON.stringify(students));
 }
+displayStudents();
