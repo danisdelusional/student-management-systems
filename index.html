@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Management System</h1>
+        <p>Manage student grades and attendance easily.</p>
+    </header>
+
+    <main>
+
+        <!-- Dashboard -->
+        <section class="dashboard">
+
+            <div class="card">
+                <h2>Total Students</h2>
+                <p id="totalStudents">0</p>
+            </div>
+
+            <div class="card">
+                <h2>Average Grade</h2>
+                <p id="averageGrade">0%</p>
+            </div>
+
+            <div class="card">
+                <h2>Attendance</h2>
+                <p id="attendanceRate">0%</p>
+            </div>
+
+        </section>
+
+
+        <!-- Add Student -->
+        <section class="student-form">
+
+            <h2>Add Student</h2>
+
+            <form id="studentForm">
+
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Student Name"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="studentId"
+                    placeholder="Student ID"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="department"
+                    placeholder="Department"
+                    required
+                >
+
+                <button type="submit">
+                    Add Student
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Search -->
+        <section>
+
+            <input
+                type="text"
+                id="searchStudent"
+                placeholder="Search students..."
+            >
+
+        </section>
+
+
+        <!-- Student Table -->
+        <section class="student-list">
+
+            <h2>Students</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Student ID</th>
+                        <th>Department</th>
+                        <th>Grade</th>
+                        <th>Attendance</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="studentTable">
+
+                    <!-- Students will appear here -->
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
