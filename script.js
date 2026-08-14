@@ -179,3 +179,117 @@ function updateDashboard() {
     localStorage.setItem("students", JSON.stringify(students));
 }
 displayStudents();
+
+// ====================
+// COURSE MANAGEMENT
+// ====================
+
+const courseForm = document.getElementById("courseForm");
+const courseTableBody = document.getElementById("courseTableBody");
+
+// Store courses
+let courses = JSON.parse(localStorage.getItem("courses")) || [];
+
+// ADD COURSE
+courseForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const courseCode = document.getElementById("courseCode").value;
+    const courseName = document.getElementById("courseName").value;
+    const courseUnit = document.getElementById("courseUnit").value;
+
+    const course = {
+        code: courseCode,
+        name: courseName,
+        unit: Number(courseUnit)
+    };
+
+    courses.push(course);
+
+    saveCourses();
+    displayCourses();
+
+    courseForm.reset();
+});
+
+// DISPLAY COURSES
+function displayCourses() {
+    courseTableBody.innerHTML = "";
+
+    courses.forEach(function (course, index) {
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${course.code}</td>
+            <td>${course.name}</td>
+            <td>${course.unit}</td>
+            <td>
+                <button onclick="editCourse(${index})">
+                    Edit
+                </button>
+
+                <button onclick="deleteCourse(${index})">
+                    Delete
+                </button>
+            </td>
+        `;
+
+        courseTableBody.appendChild(row);
+    });
+}
+
+// DELETE COURSE
+function deleteCourse(index) {
+
+    const confirmDelete = confirm(
+        "Are you sure you want to delete this course?"
+    );
+
+    if (confirmDelete) {
+
+        courses.splice(index, 1);
+
+        saveCourses();
+        displayCourses();
+    }
+}
+
+// EDIT COURSE
+function editCourse(index) {
+
+    const course = courses[index];
+
+    const newName = prompt(
+        "Enter course name",
+        course.name
+    );
+
+    const newUnit = prompt(
+        "Enter course unit",
+        course.unit
+    );
+
+    if (newName !== null && newName.trim() !== "") {
+        course.name = newName;
+    }
+
+    if (newUnit !== null && newUnit > 0) {
+        course.unit = Number(newUnit);
+    }
+
+    saveCourses();
+    displayCourses();
+}
+
+// SAVE COURSES
+function saveCourses() {
+
+    localStorage.setItem(
+        "courses",
+        JSON.stringify(courses)
+    );
+}
+
+// LOAD COURSES
+displayCourses();
