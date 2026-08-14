@@ -175,3 +175,78 @@ td {
         width: 90%;
     }
 }
+
+/* =========================
+   COURSE MANAGEMENT
+========================= */
+
+.course-section {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.course-section h2 {
+    margin-bottom: 20px;
+}
+
+/* =========================
+   BETTER MOBILE DESIGN
+========================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 25px 20px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    main {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    .dashboard {
+        gap: 12px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .student-form,
+    .student-list,
+    .course-section {
+        padding: 20px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    input,
+    button {
+        width: 100%;
+    }
+
+    /* Allow tables to scroll instead of breaking the page */
+    .student-list,
+    .course-section {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 650px;
+    }
+
+    th,
+    td {
+        padding: 12px 10px;
+        white-space: nowrap;
+    }
+}
