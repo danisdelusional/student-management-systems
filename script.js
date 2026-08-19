@@ -21,14 +21,13 @@ studentForm.addEventListener("submit", function (event) {
     const department = document.getElementById("department").value;
 
     const student = {
-        name: name,
-        id: id,
-        department: department,
-        grade: 0,
-        attendance: 0
-    };
+    name: name,
+    id: id,
+    department: department,
+    courses: []
+};
 
-    students.push(student);
+students.push(student);
 
 saveStudents();
 
@@ -56,9 +55,7 @@ function displayStudents(list = students) {
 
             <td>${student.department}</td>
 
-            <td>${student.grade}%</td>
-
-            <td>${student.attendance}%</td>
+            <td>${student.courses.length} course(s)</td>
 
             <td>
                 <button onclick="editStudent(${index})">
@@ -73,6 +70,7 @@ function displayStudents(list = students) {
 
         studentTable.appendChild(row);
     });
+}
 
     updateDashboard();
 }
