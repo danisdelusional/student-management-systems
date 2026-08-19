@@ -10,6 +10,17 @@ const attendanceRate = document.getElementById("attendanceRate");
 // Store students
 let students = JSON.parse(localStorage.getItem("students")) || [];
 
+students = students.map(function (student) {
+    return {
+        name: student.name,
+        id: student.id,
+        department: student.department,
+        courses: student.courses || []
+    };
+});
+
+saveStudents();
+
 
 // ADD STUDENT
 studentForm.addEventListener("submit", function (event) {
