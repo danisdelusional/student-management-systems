@@ -301,4 +301,20 @@ function saveCourses() {
 }
 
 // LOAD COURSES
+function displayCourses() {
+    courseTableBody.innerHTML = "";
+
+    courses.forEach(function (course) {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${course.code}</td>
+            <td>${course.name}</td>
+            <td>${course.unit}</td>
+        `;
+
+        courseTableBody.appendChild(row);
+    });
+} 
+
 displayCourses();
